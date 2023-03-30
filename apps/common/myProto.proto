@@ -1,0 +1,19 @@
+// https://grpc.io/docs/languages/node/quickstart/
+// google import definitions
+// https://protobuf.dev/reference/protobuf/google.protobuf/
+syntax = "proto3";
+
+package nice_grpc.myCoolPageNameSpace;
+
+// The greeting service definition.
+service MyApi {
+  rpc GetHello (HelloRequest) returns (Hello) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message Hello {
+  string message = 1;
+}

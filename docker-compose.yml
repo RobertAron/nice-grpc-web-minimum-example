@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: apps/server/Dockerfile
+    ports:
+      - 9090:9090
+      - 9090:9090/udp
+  node-client:
+    build:
+      context: .
+      dockerfile: apps/node-client/Dockerfile
+    depends_on:
+      - envoy
+  www-client:
+    build:
+      context: .
+      dockerfile: apps/www-client/Dockerfile
+    ports:
+      - 3000:3000
+  envoy:
+    depends_on:
+      - server
+    build:
+      dockerfile: Dockerfile
+      context: ./apps/envoy
+    ports:
+      - 8080:8080
+      - 9901:9901

@@ -1,0 +1,25 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "prebuild": "rm -rf ./src/codegen-proto && mkdir ./src/codegen-proto && protoc --ts_proto_out=./src/codegen-proto --ts_proto_opt=env=browser,outputServices=nice-grpc,outputServices=generic-definitions,outputJsonMethods=false,useExactTypes=false,esModuleInterop=true ./myProto.proto",
+    "prebuild2": "rm -rf ./src/codegen-proto && mkdir ./src/codegen-proto && ./node_modules/.bin/grpc_tools_node_protoc --ts_proto_out=./src/codegen-proto --ts_proto_opt=env=browser,outputServices=nice-grpc,outputServices=generic-definitions,outputJsonMethods=false,useExactTypes=false,esModuleInterop=true ./myProto.proto",
+    "//": "^This doesn't work in the docker file for some weird reason. I don't this it's the problem though because even when I build the things locally I get the same issue.",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grpc-tools": "^1.12.4",
+    "ts-proto": "^1.145.0",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "long": "^5.2.1",
+    "nice-grpc-common": "^2.0.1",
+    "nice-grpc-web": "^3.2.2",
+    "protobufjs": "^7.2.3"
+  }
+}
