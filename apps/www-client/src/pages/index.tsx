@@ -2,7 +2,7 @@ import { createChannel, createClient } from "nice-grpc-web";
 import { MyApiClient, MyApiDefinition } from "common";
 import { useEffect } from "react";
 
-const channel = createChannel("localhost:8080");
+const channel = createChannel("http://localhost:8080");
 const client: MyApiClient = createClient(MyApiDefinition, channel);
 
 export default function Home() {
