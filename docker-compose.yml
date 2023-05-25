@@ -20,8 +20,6 @@ services:
     ports:
       - 3000:3000
   envoy:
-    depends_on:
-      - server
     build:
       dockerfile: Dockerfile
       context: ./apps/envoy
